@@ -2,53 +2,63 @@ use std::collections::HashSet;
 use std::fs::File;
 use std::io::{BufReader, BufRead};
 
-pub fn part_one(file_path: &str) -> Result<i32, Box<dyn std::error::Error>> {
-    let file: File = File::open(file_path)?;
-    let reader:BufReader<File> = BufReader::new(file);
-    for line in reader.lines().flatten() {
-        println!("{}", line);
-    };
-    // let mut seen: HashSet = HashSet::new();
-    let x: i32 = 2020;
-    if x == 2020 {
-        Ok(x)
-    }
-    else {
-        return Err("Something went wrong".into());
-    }
-
+pub fn part_one(file_path: &str, target_sum: i32) -> Result<i32, Box<dyn std::error::Error>> {
+    let numbers: Vec<i32> = read_numbers_from_file(file_path)?;
+    let (a, b) = find_target_number(&numbers, target_sum)
+        .ok_or_else(|| "No solution found")?;
+    Ok(a * b)
 }
-pub fn part_two(file_path: &str) -> Result<i32, Box<dyn std::error::Error>> {
-    let x:i32 = 128;
-    if x == 128 {
-        Ok(x)
-    }
-    else { Err("Not yet implemented".into()) }
-}
-
-
-
-pub fn part_one_ref() -> Result<u32, Box<dyn std::error::Error>> {
-    let file = File::open("src/day_1/example.txt")?;
-    let reader:BufReader<File> = BufReader::new(file);
-
-    let numbers: Vec<u32> = reader
-        .lines()
-        .filter_map(|line| line.ok())
-        .map(|line| line.trim().to_string())
-        .filter(|line| !line.is_empty())
-        .filter_map(|line| line.parse().ok())
-        .collect();
-
-    let mut seen = HashSet::new();
-
+pub fn part_two(file_path: &str, target_sum: i32) -> Result<i32, Box<dyn std::error::Error>> {
+    let numbers: Vec<i32> = read_numbers_from_file(file_path)?;
     for &number in &numbers {
-        let target: u32 = 2020 - number;
+       let sub_target: i32 = target_sum - number;
+       if let Some((a, b)) = find_target_number(&numbers, sub_target) {
+           if a != number && b != number {
+               println!("{} -> {} -> {}", number, a, b);
+               return Ok(a * b * number);
+           }
+       }
+    }
+    Err("No solution found".into())
+
+}
+
+fn read_numbers_from_file(file_path: &str) -> Result<Vec<i32>, std::io::Error> {
+    let file: File = File::open(file_path)?;
+    let reader: BufReader<File> = BufReader::new(file);
+    let numbers: Vec<i32> = reader
+        .lines()
+        .flatten()
+        .filter_map(|line| line.trim().parse().ok())
+        .collect();
+    Ok(numbers)
+}
+
+fn find_target_number(numbers: &Vec<i32>, target_sum: i32) -> Option<(i32, i32)> {
+    let mut seen: HashSet<i32> = HashSet::new();
+    for &number in numbers {
+        let target: i32 = target_sum - number;
         if seen.contains(&target) {
-            return Ok(number*target);
+            println!("{} -> {}", number, target);
+            return Some((target, number));
         }
         seen.insert(number);
     }
+    None
+}
 
-    Err("No pair found".into())
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_find_target_number_found() {
+        let numbers = vec![1721, 979, 366, 299, 675, 1456];
+        let result = find_target_number(&numbers, 2020);
+
+        assert!(result.is_some());
+        let (a, b) = result.unwrap();
+        assert_eq!(a + b, 2020);
+        assert_eq!(a * b, 514579);
+    }
 }
