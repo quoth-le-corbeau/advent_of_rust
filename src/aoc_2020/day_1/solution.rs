@@ -2,13 +2,13 @@ use std::collections::HashSet;
 use std::fs::File;
 use std::io::{BufReader, BufRead};
 
-pub fn part_one(file_path: &str, target_sum: i32) -> Result<i32, Box<dyn std::error::Error>> {
+pub fn part_1(file_path: &str, target_sum: i32) -> Result<i32, Box<dyn std::error::Error>> {
     let numbers: Vec<i32> = read_numbers_from_file(file_path)?;
     let (a, b) = find_target_number(&numbers, target_sum)
         .ok_or_else(|| "No solution found")?;
     Ok(a * b)
 }
-pub fn part_two(file_path: &str, target_sum: i32) -> Result<i32, Box<dyn std::error::Error>> {
+pub fn part_2(file_path: &str, target_sum: i32) -> Result<i32, Box<dyn std::error::Error>> {
     let numbers: Vec<i32> = read_numbers_from_file(file_path)?;
     for &number in &numbers {
        let sub_target: i32 = target_sum - number;
