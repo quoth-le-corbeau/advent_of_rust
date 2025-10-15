@@ -14,7 +14,16 @@ pub fn twenty_fifteen() {
         Ok(value) => println!("Day 1 part 1 value: {value}"),
         Err(error) => println!("Day 1 Part 1 Error: {error}"),
     }
+    println!("---------");
+    match day_1_part_2_eg() {
+        Ok(value) => println!("Day 1 part 2 value: {value}"),
+        Err(error) => println!("Day 1 Part 2 Error: {error}"),
+    }    println!("---------");
 
+    match day_1_part_2() {
+        Ok(value) => println!("Day 1 part 2 value: {value}"),
+        Err(error) => println!("Day 1 Part 2 Error: {error}"),
+    }
 }
 
 fn day_1_part_1_eg() -> Result<i32, Box<dyn std::error::Error>> {
@@ -23,4 +32,12 @@ fn day_1_part_1_eg() -> Result<i32, Box<dyn std::error::Error>> {
 
 fn day_1_part_1() -> Result<i32, Box<dyn std::error::Error>> {
     day_1::solution::part_1("src/aoc_2015/day_1/input.txt")
+}
+
+fn day_1_part_2_eg() -> Result<usize, Box<dyn std::error::Error>> {
+    day_1::solution::part_2("src/aoc_2015/day_1/example.txt")
+}
+
+fn day_1_part_2() -> Result<usize, Box<dyn std::error::Error>> {
+    day_1::solution::part_2("src/aoc_2015/day_1/input.txt")
 }
