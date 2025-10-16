@@ -1,15 +1,15 @@
 pub mod day_1;
 
 pub fn twenty_sixteen() {
-    println!("-----------------------");
-    println!("============================*** Advent of Code 2016 ***=====================");
-    println!("---------------------");
-    println!("----------------------------------Day 1------------------------------------");
+    println!("-----------------------------------------------------");
+    println!("\n============ *** Advent of Code 2016 *** ============\n");
+    println!("-----------------------------------------------------");
+    println!("------------------- >>> Day 1 <<< -------------------");
     match day_1_part_1_eg() {
         Ok(result) => println!("Example Day 1 Part 1: {}", result),
         Err(error) => println!("Example Day 1 Part 1 Error: {}", error),
     }
-    println!("----------------");
+    println!("-----------------------------------------------------");
     match day_1_part_1() {
         Ok(result) => println!("Day 1 Part 1: {}", result),
         Err(error) => println!("Day 1 Part 1 Error: {}", error),
