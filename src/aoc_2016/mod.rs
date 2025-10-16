@@ -14,9 +14,7 @@ pub fn twenty_sixteen() {
         Ok(result) => println!("Day 1 Part 1: {}", result),
         Err(error) => println!("Day 1 Part 1 Error: {}", error),
     }
-
 }
-
 
 fn day_1_part_1_eg() -> Result<u32, Box<dyn std::error::Error>> {
     day_1::solution::part_1("src/aoc_2016/day_1/example.txt")
