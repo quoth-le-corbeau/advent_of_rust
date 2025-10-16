@@ -2,9 +2,9 @@ pub mod day_1;
 
 pub fn twenty_twenty () {
     println!("--------------------------");
-    println!("====================Advent of Code 2020 =================");
+    println!("====================***Advent of Code 2020***=================");
     println!("--------------------------");
-    println!("-------------Day 1------------------------");
+    println!("-------------------------------Day 1----------------------------");
     match day_1_part_1_eg() {
         Ok(value) => println!("Example: Day 1 part 1 value: {value}"),
         Err(e) => println!("Example: Day 1 part 1 Error: {e}")
