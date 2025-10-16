@@ -7,11 +7,9 @@ pub fn part_1(file_path: &str) -> Result<u32, Box<dyn std::error::Error>> {
         let distance: u32 = instruction[1..].parse()?;
         if direction == "R" {
             unit_vector = (-unit_vector.1, unit_vector.0);
-        }
-        else if direction == "L" {
+        } else if direction == "L" {
             unit_vector = (unit_vector.1, -unit_vector.0);
-        }
-        else {
+        } else {
             Err("Invalid direction")?;
         }
         // Move distance steps in the unit_vector direction
@@ -29,4 +27,3 @@ fn parse_input(file_path: &str) -> Result<Vec<String>, std::io::Error> {
     let parts: Vec<String> = content.trim().split(", ").map(|s| s.to_string()).collect();
     Ok(parts)
 }
-
