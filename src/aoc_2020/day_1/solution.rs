@@ -13,7 +13,7 @@ pub fn part_2(file_path: &str, target_sum: i32) -> Result<i32, Box<dyn std::erro
         let sub_target: i32 = target_sum - number;
         if let Some((a, b)) = find_target_number(&numbers, sub_target) {
             if a != number && b != number {
-                println!("{} -> {} -> {}", number, a, b);
+                println!("{} <-> {} <-> {}", number, a, b);
                 return Ok(a * b * number);
             }
         }
@@ -37,7 +37,7 @@ fn find_target_number(numbers: &Vec<i32>, target_sum: i32) -> Option<(i32, i32)>
     for &number in numbers {
         let target: i32 = target_sum - number;
         if seen.contains(&target) {
-            println!("{} -> {}", number, target);
+            println!("{} <-> {}", number, target);
             return Some((target, number));
         }
         seen.insert(number);
