@@ -1,20 +1,11 @@
-use std::fs::File;
-use std::io::{BufRead, BufReader};
-
 fn parse_input(file_path: &str) -> Result<String, std::io::Error> {
-    let file: File = File::open(file_path)?;
-    let mut reader = BufReader::new(file);
-    let mut line: String = String::new();
-    reader.read_line(&mut line)?;
-    Ok(line)
+    let contents: String = std::fs::read_to_string(file_path)?;
+    Ok(contents)
 }
 
 pub fn part_1(file_path: &str) -> Result<i32, Box<dyn std::error::Error>> {
-
     let mut line: String = parse_input(file_path).unwrap();
-
     let mut count: i32 = 0;
-
     for (i, c) in line.trim().chars().enumerate() {
         match c {
             '(' => count += 1,
@@ -26,11 +17,7 @@ pub fn part_1(file_path: &str) -> Result<i32, Box<dyn std::error::Error>> {
 }
 
 pub fn part_2(file_path: &str) -> Result<usize, Box<dyn std::error::Error>> {
-    let file: File = File::open(file_path)?;
-    let mut reader: BufReader<File> = BufReader::new(file);
-    let mut line: String = String::new();
-    reader.read_line(&mut line)?;
-
+    let line: String = parse_input(file_path)?;
     let mut count: i32 = 0;
     for (i, c) in line.trim().chars().enumerate() {
         match c {
