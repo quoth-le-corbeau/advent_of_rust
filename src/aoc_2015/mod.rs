@@ -16,7 +16,7 @@ pub fn twenty_fifteen() {
     }
     println!("---------");
     match day_1_part_2_eg() {
-        Ok(value) => println!("Day 1 part 2 value: {value}"),
+        Ok(value) => println!("Example Day 1 part 2 value: {value}"),
         Err(error) => println!("Day 1 Part 2 Error: {error}"),
     }    println!("---------");
 

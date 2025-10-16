@@ -1,12 +1,17 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
-
-pub fn part_1(file_path: &str) -> Result<i32, Box<dyn std::error::Error>> {
+fn parse_input(file_path: &str) -> Result<String, std::io::Error> {
     let file: File = File::open(file_path)?;
-    let mut reader: BufReader<File> = BufReader::new(file);
+    let mut reader = BufReader::new(file);
     let mut line: String = String::new();
     reader.read_line(&mut line)?;
+    Ok(line)
+}
+
+pub fn part_1(file_path: &str) -> Result<i32, Box<dyn std::error::Error>> {
+
+    let mut line: String = parse_input(file_path).unwrap();
 
     let mut count: i32 = 0;
 
