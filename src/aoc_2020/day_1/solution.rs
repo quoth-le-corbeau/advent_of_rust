@@ -1,26 +1,24 @@
 use std::collections::HashSet;
 use std::fs::File;
-use std::io::{BufReader, BufRead};
+use std::io::{BufRead, BufReader};
 
 pub fn part_1(file_path: &str, target_sum: i32) -> Result<i32, Box<dyn std::error::Error>> {
     let numbers: Vec<i32> = read_numbers_from_file(file_path)?;
-    let (a, b) = find_target_number(&numbers, target_sum)
-        .ok_or_else(|| "No solution found")?;
+    let (a, b) = find_target_number(&numbers, target_sum).ok_or_else(|| "No solution found")?;
     Ok(a * b)
 }
 pub fn part_2(file_path: &str, target_sum: i32) -> Result<i32, Box<dyn std::error::Error>> {
     let numbers: Vec<i32> = read_numbers_from_file(file_path)?;
     for &number in &numbers {
-       let sub_target: i32 = target_sum - number;
-       if let Some((a, b)) = find_target_number(&numbers, sub_target) {
-           if a != number && b != number {
-               println!("{} -> {} -> {}", number, a, b);
-               return Ok(a * b * number);
-           }
-       }
+        let sub_target: i32 = target_sum - number;
+        if let Some((a, b)) = find_target_number(&numbers, sub_target) {
+            if a != number && b != number {
+                println!("{} -> {} -> {}", number, a, b);
+                return Ok(a * b * number);
+            }
+        }
     }
     Err("No solution found".into())
-
 }
 
 fn read_numbers_from_file(file_path: &str) -> Result<Vec<i32>, std::io::Error> {

@@ -15,7 +15,7 @@ fn count_floors(line: &str) -> Result<i32, Box<dyn std::error::Error>> {
         match c {
             '(' => count += 1,
             ')' => count -= 1,
-            _ => return Err(format!("Invalid character '{c}' at position {i}").into())
+            _ => return Err(format!("Invalid character '{c}' at position {i}").into()),
         }
     }
     Ok(count)
@@ -27,10 +27,10 @@ fn count_floors_until_target(line: &str, target: i32) -> Result<usize, Box<dyn s
         match c {
             '(' => count += 1,
             ')' => count -= 1,
-            _ => return Err(format!("Invalid character '{c}' at position {i}").into())
+            _ => return Err(format!("Invalid character '{c}' at position {i}").into()),
         }
         if count == target {
-            let answer:usize = i + 1;
+            let answer: usize = i + 1;
             return Ok(answer);
         }
     }
@@ -43,7 +43,31 @@ fn parse_input(file_path: &str) -> Result<String, std::io::Error> {
 
 #[cfg(test)]
 mod tests {
+    use crate::aoc_2015::day_1::solution::count_floors;
+    use crate::aoc_2015::day_1::solution::count_floors_until_target;
+    use parameterized::parameterized;
 
     #[test]
-    fn test_count_floors() {}
+    fn test_count_floors() {
+        let test_cases = vec![
+            ("(())", 0),
+            ("()()", 0),
+            ("(((", 3),
+            ("(()(()(", 3),
+            ("))(((((", 3),
+            ("())", -1),
+            (")))", -3),
+            ("))(", -1),
+            (")())())", -3),
+        ];
+        for (input, expected) in test_cases {
+            let result = count_floors(input);
+            assert_eq!(result.unwrap(), expected);
+        }
+    }
+
+    #[parameterized(input={"()())", ")"}, expected={5, 1})]
+    fn test_count_floors_until_target(input: &str, expected: usize) {
+        assert_eq!(count_floors_until_target(input, -1).unwrap(), expected);
+    }
 }
