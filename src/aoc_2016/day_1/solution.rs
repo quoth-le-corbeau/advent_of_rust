@@ -1,78 +1,82 @@
 use std::collections::HashSet;
+use std::error::Error;
 use std::path::Path;
 
-struct Position {
+#[derive(Debug, Clone)]
+struct Walker {
     unit_vector: (i32, i32),
     position: (i32, i32),
     distance: i32,
+    visited: HashSet<(i32, i32)>,
+}
+
+impl Walker {
+    fn new() -> Self {
+        Walker{
+            unit_vector: (0, -1), // initialize facing north
+            position: (0, 0),
+            distance: 0,
+            visited: HashSet::new(),
+        }
+    }
+
+    fn turn_right(&mut self) {
+        self.unit_vector = (-self.unit_vector.1, -self.unit_vector.0);
+    }
+
+    fn turn_left(&mut self) {
+        self.unit_vector = (self.unit_vector.1, -self.unit_vector.0);
+    }
+
+    fn manhattan_to_origin(&self) -> i32 {
+        self.position.0.abs() + self.position.1.abs()
+    }
+
+    fn move_one_step(&mut self) {
+        self.position.0 += self.unit_vector.0;
+        self.position.1 += self.unit_vector.1;
+        self.visited.insert(self.position);
+    }
+
+    fn move_distance(&mut self) {
+        self.position.0 += self.unit_vector.0 * self.distance;
+        self.position.1 += self.unit_vector.1 * self.distance;
+        self.visited.insert(self.position);
+    }
+
+    fn parse_instruction(&mut self, instruction: String) -> Result<(), Box<dyn std::error::Error>> {
+        let direction = &instruction[0..1];
+        let distance = instruction[1..].parse::<i32>()?;
+
+        match direction {
+            "R" => self.turn_right(),
+            "L" => self.turn_left(),
+            _ => return Err(format!("Unknown direction: {direction}").into())
+        }
+        self.distance = distance;
+        Ok(())
+    }
+
+
+
 }
 pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::Error>> {
     let instructions: Vec<String> = parse_input(file_path)?;
-    let mut state = Position {
-        unit_vector: (0, -1),
-        position: (0, 0),
-        distance: 0,
-    };
+    let mut walker = Walker::new();
     for instruction in instructions {
-        state = move_per_instruction(instruction, state)?;
+        walker.parse_instruction(instruction)?;
+        walker.move_distance();
     }
-    let manhattan: i32 = state.position.0.abs() + state.position.1.abs();
-    Ok(manhattan as u32)
+    let result: i32 = walker.manhattan_to_origin();
+    Ok(result as u32)
 }
 
 pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::Error>> {
     let instructions: Vec<String> = parse_input(file_path)?;
-    let mut state = Position {
-        unit_vector: (0, -1),
-        position: (0, 0),
-        distance: 0,
-    };
-    let mut visited: HashSet<(i32, i32)> = HashSet::new();
-    visited.insert((0, 0));
-
-    for instruction in instructions {
-        state = prepare_move(instruction, state)?;
-        for _ in 0..state.distance {
-            state.position.0 += state.unit_vector.0;
-            state.position.1 += state.unit_vector.1;
-            if visited.contains(&state.position) {
-                let manhattan: i32 = state.position.0.abs() + state.position.1.abs();
-                return Ok(manhattan as u32);
-            } else {
-                visited.insert(state.position);
-            }
-        }
-    }
-    Err("No solution found".into())
+    Ok(0)
 }
 
-fn move_per_instruction(
-    instruction: String,
-    mut state: Position,
-) -> Result<Position, Box<dyn std::error::Error>> {
-    state = prepare_move(instruction, state)?;
-    state.position = (
-        state.position.0 + state.unit_vector.0 * state.distance,
-        state.position.1 + state.unit_vector.1 * state.distance,
-    );
-    Ok(state)
-}
 
-fn prepare_move(
-    instruction: String,
-    mut state: Position,
-) -> Result<Position, Box<dyn std::error::Error>> {
-    let direction = &instruction[0..1];
-    state.distance = instruction[1..].parse()?;
-    if direction == "R" {
-        state.unit_vector = (-state.unit_vector.1, state.unit_vector.0);
-    } else if direction == "L" {
-        state.unit_vector = (state.unit_vector.1, -state.unit_vector.0);
-    } else {
-        Err("Invalid direction: {direction}")?;
-    }
-    Ok(state)
-}
 
 fn parse_input<P: AsRef<Path>>(file_path: P) -> Result<Vec<String>, std::io::Error> {
     let content: String = std::fs::read_to_string(file_path)?;
