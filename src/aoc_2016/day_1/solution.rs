@@ -12,7 +12,7 @@ struct Walker {
 
 impl Walker {
     fn new() -> Self {
-        Walker{
+        Walker {
             unit_vector: (0, -1), // initialize facing north
             position: (0, 0),
             distance: 0,
@@ -51,14 +51,11 @@ impl Walker {
         match direction {
             "R" => self.turn_right(),
             "L" => self.turn_left(),
-            _ => return Err(format!("Unknown direction: {direction}").into())
+            _ => return Err(format!("Unknown direction: {direction}").into()),
         }
         self.distance = distance;
         Ok(())
     }
-
-
-
 }
 pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::Error>> {
     let instructions: Vec<String> = parse_input(file_path)?;
@@ -75,8 +72,6 @@ pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
     let instructions: Vec<String> = parse_input(file_path)?;
     Ok(0)
 }
-
-
 
 fn parse_input<P: AsRef<Path>>(file_path: P) -> Result<Vec<String>, std::io::Error> {
     let content: String = std::fs::read_to_string(file_path)?;
