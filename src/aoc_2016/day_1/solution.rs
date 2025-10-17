@@ -1,5 +1,4 @@
 use std::collections::HashSet;
-use std::error::Error;
 use std::path::Path;
 
 #[derive(Debug, Clone)]
@@ -21,7 +20,7 @@ impl Walker {
     }
 
     fn turn_right(&mut self) {
-        self.unit_vector = (-self.unit_vector.1, -self.unit_vector.0);
+        self.unit_vector = (-self.unit_vector.1, self.unit_vector.0);
     }
 
     fn turn_left(&mut self) {
@@ -35,7 +34,6 @@ impl Walker {
     fn move_one_step(&mut self) {
         self.position.0 += self.unit_vector.0;
         self.position.1 += self.unit_vector.1;
-        self.visited.insert(self.position);
     }
 
     fn move_distance(&mut self) {
@@ -70,7 +68,19 @@ pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
 
 pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::Error>> {
     let instructions: Vec<String> = parse_input(file_path)?;
-    Ok(0)
+    let mut walker = Walker::new();
+    for instruction in instructions {
+        walker.parse_instruction(instruction)?;
+        for _ in 0..walker.distance {
+            walker.move_one_step();
+            if walker.visited.contains(&walker.position) {
+                return Ok(walker.manhattan_to_origin() as u32);
+            }
+            walker.visited.insert(walker.position);
+        }
+
+    }
+    Err("No solution found".into())
 }
 
 fn parse_input<P: AsRef<Path>>(file_path: P) -> Result<Vec<String>, std::io::Error> {
