@@ -1,3 +1,4 @@
+use std::collections::HashSet;
 use std::path::Path;
 
 struct Position {
@@ -5,7 +6,7 @@ struct Position {
     position: (i32, i32),
 }
 pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::Error>> {
-    let instructions: Vec<String> = parse_input(file_path).unwrap();
+    let instructions: Vec<String> = parse_input(file_path)?;
     let mut state = Position {
         unit_vector: (0, -1),
         position: (0, 0),
@@ -17,6 +18,24 @@ pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
     Ok(manhattan as u32)
 }
 
+pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::Error>> {
+    let instructions: Vec<String> = parse_input(file_path)?;
+    let mut state = Position{unit_vector: (0, 0), position: (0, 0)};
+    let mut visited : HashSet<(i32, i32)> = HashSet::new();
+    for instruction in instructions {
+        state = move_per_instruction(instruction, state)?;
+        if visited.contains(&state.position) {
+            let manhattan: i32 = state.position.0.abs() + state.position.1.abs();
+            return Ok(manhattan as u32)
+        }
+        else {
+            visited.insert(state.position);
+        }
+    }
+    Err("No solution found".into())
+
+}
+
 fn move_per_instruction(
     instruction: String,
     mut state: Position,
@@ -24,7 +43,7 @@ fn move_per_instruction(
     let direction = &instruction[0..1];
     let distance: i32 = instruction[1..].parse()?;
     if direction == "R" {
-        state.unit_vector = (-state.unit_vector.1, -state.unit_vector.0);
+        state.unit_vector = (-state.unit_vector.1, state.unit_vector.0);
     } else if direction == "L" {
         state.unit_vector = (state.unit_vector.1, -state.unit_vector.0);
     } else {
