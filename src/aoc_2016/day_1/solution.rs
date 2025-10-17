@@ -25,7 +25,7 @@ pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
     let mut state = Position {
         unit_vector: (0, -1),
         position: (0, 0),
-        distance: 0
+        distance: 0,
     };
     let mut visited: HashSet<(i32, i32)> = HashSet::new();
     visited.insert((0, 0));
@@ -38,8 +38,7 @@ pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
             if visited.contains(&state.position) {
                 let manhattan: i32 = state.position.0.abs() + state.position.1.abs();
                 return Ok(manhattan as u32);
-            }
-            else {
+            } else {
                 visited.insert(state.position);
             }
         }
