@@ -4,14 +4,14 @@ use std::path::Path;
 struct Position {
     unit_vector: (i32, i32),
     position: (i32, i32),
-    distance: i32
+    distance: i32,
 }
 pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::Error>> {
     let instructions: Vec<String> = parse_input(file_path)?;
     let mut state = Position {
         unit_vector: (0, -1),
         position: (0, 0),
-        distance: 0
+        distance: 0,
     };
     for instruction in instructions {
         state = move_per_instruction(instruction, state)?;
@@ -25,7 +25,7 @@ pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
     let mut state = Position {
         unit_vector: (0, 0),
         position: (0, 0),
-        distance: 0
+        distance: 0,
     };
     let mut visited: HashSet<(i32, i32)> = HashSet::new();
     for instruction in instructions {
@@ -33,15 +33,14 @@ pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
         for _ in 0..state.distance {
             state.position = (
                 state.position.0 + state.unit_vector.0,
-                state.position.1 + state.unit_vector.1
+                state.position.1 + state.unit_vector.1,
             );
             //state.position.0 += state.unit_vector.0;
             //state.position.1 += state.unit_vector.1;
             if visited.contains(&state.position) {
                 let manhattan: i32 = state.position.0.abs() + state.position.1.abs();
                 return Ok(manhattan as u32);
-            }
-            else {
+            } else {
                 visited.insert(state.position);
             }
         }
@@ -61,7 +60,10 @@ fn move_per_instruction(
     Ok(state)
 }
 
-fn prepare_move(instruction: String, mut state: Position) -> Result<Position, Box<dyn std::error::Error>> {
+fn prepare_move(
+    instruction: String,
+    mut state: Position,
+) -> Result<Position, Box<dyn std::error::Error>> {
     let direction = &instruction[0..1];
     state.distance = instruction[1..].parse()?;
     if direction == "R" {
