@@ -39,10 +39,9 @@ impl Walker {
     fn move_distance(&mut self) {
         self.position.0 += self.unit_vector.0 * self.distance;
         self.position.1 += self.unit_vector.1 * self.distance;
-        self.visited.insert(self.position);
     }
 
-    fn parse_instruction(&mut self, instruction: String) -> Result<(), Box<dyn std::error::Error>> {
+    fn parse_instruction(&mut self, instruction: &str) -> Result<(), Box<dyn std::error::Error>> {
         let direction = &instruction[0..1];
         let distance = instruction[1..].parse::<i32>()?;
 
@@ -59,7 +58,7 @@ pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
     let instructions: Vec<String> = parse_input(file_path)?;
     let mut walker = Walker::new();
     for instruction in instructions {
-        walker.parse_instruction(instruction)?;
+        walker.parse_instruction(&instruction)?;
         walker.move_distance();
     }
     let result: i32 = walker.manhattan_to_origin();
@@ -70,13 +69,13 @@ pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
     let instructions: Vec<String> = parse_input(file_path)?;
     let mut walker = Walker::new();
     for instruction in instructions {
-        walker.parse_instruction(instruction)?;
+        walker.parse_instruction(&instruction)?;
         for _ in 0..walker.distance {
             walker.move_one_step();
-            if walker.visited.contains(&walker.position) {
+            if !walker.visited.insert(walker.position) {
                 return Ok(walker.manhattan_to_origin() as u32);
             }
-            walker.visited.insert(walker.position);
+            //walker.visited.insert(walker.position); <- not needed due to syntactic sugar
         }
 
     }
