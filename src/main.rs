@@ -1,14 +1,15 @@
 use std::collections::HashMap;
 
 mod aoc_2015;
-
 mod aoc_2016;
 mod aoc_2020;
+mod aoc_2022;
 
 fn main() {
     aoc_2015::twenty_fifteen();
     aoc_2016::twenty_sixteen();
     aoc_2020::twenty_twenty();
+    aoc_2022::twenty_twenty_two();
     println!("Fibonacci!");
     let mut cache = HashMap::new();
     //let fib_n: u64 = fibonacci(500, &mut cache); <- panic integer overflow

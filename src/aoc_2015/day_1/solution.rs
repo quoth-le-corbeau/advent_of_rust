@@ -1,10 +1,11 @@
-pub fn part_1(file_path: &str) -> Result<i32, Box<dyn std::error::Error>> {
-    let line: String = parse_input(file_path).unwrap();
+use std::path::Path;
+pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<i32, Box<dyn std::error::Error>> {
+    let line: String = parse_input(file_path)?;
     let count: i32 = count_floors(&line)?;
     Ok(count)
 }
 
-pub fn part_2(file_path: &str) -> Result<usize, Box<dyn std::error::Error>> {
+pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<usize, Box<dyn std::error::Error>> {
     let line: String = parse_input(file_path)?;
     count_floors_until_target(&line, -1)
 }
@@ -36,7 +37,7 @@ fn count_floors_until_target(line: &str, target: i32) -> Result<usize, Box<dyn s
     }
     Err("No answer found".into())
 }
-fn parse_input(file_path: &str) -> Result<String, std::io::Error> {
+fn parse_input<P: AsRef<Path>>(file_path: P) -> Result<String, std::io::Error> {
     let contents: String = std::fs::read_to_string(file_path)?;
     Ok(contents)
 }

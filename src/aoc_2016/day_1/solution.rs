@@ -77,7 +77,6 @@ pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
             }
             //walker.visited.insert(walker.position); <- not needed due to syntactic sugar
         }
-
     }
     Err("No solution found".into())
 }
