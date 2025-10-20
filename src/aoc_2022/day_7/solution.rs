@@ -6,9 +6,9 @@ const TOTAL_DISK_SPACE: i64 = 70000000;
 const SPACE_REQUIRED_FOR_UPDATE: i64 = 30000000;
 
 pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<i64, Box<dyn std::error::Error>> {
-    let (root_dir_size, size_map) = get_file_system_size(file_path)?;
+    let (_root_dir_size, size_map) = get_file_system_size(file_path)?;
     let mut total: i64 = 0;
-    for (dir_name, dir_size) in &size_map {
+    for (_dir_name, dir_size) in &size_map {
         if *dir_size <= PART_ONE_SIZE_LIMIT {
             total += *dir_size
         }
@@ -21,7 +21,7 @@ pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<i64, Box<dyn std::error::E
     let free_disk_space: i64 = TOTAL_DISK_SPACE - root_dir_size;
     let minimum_space_to_free: i64 = SPACE_REQUIRED_FOR_UPDATE - free_disk_space;
     let mut candidates: Vec<i64> = Vec::new();
-    for (dir_name, dir_size) in &size_map {
+    for (_dir_name, dir_size) in &size_map {
         if *dir_size >= minimum_space_to_free {
             candidates.push(*dir_size);
         }
