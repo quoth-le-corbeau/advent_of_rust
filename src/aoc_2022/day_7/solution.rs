@@ -9,9 +9,9 @@ pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<i64, Box<dyn std::error::E
     let (root_dir_size, size_map) = get_file_system_size(file_path)?;
     let mut total: i64 = 0;
     for (dir_name, dir_size) in &size_map {
-       if *dir_size <= PART_ONE_SIZE_LIMIT {
-           total += *dir_size
-       }
+        if *dir_size <= PART_ONE_SIZE_LIMIT {
+            total += *dir_size
+        }
     }
     Ok(total)
 }
