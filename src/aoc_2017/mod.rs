@@ -1,6 +1,5 @@
 pub mod day_1;
 
-
 pub fn twenty_seventeen() {
     println!("-----------------------------------------------------");
     println!("\n=========== *** Advent of Code 2017 *** =============");
@@ -27,7 +26,6 @@ pub fn twenty_seventeen() {
     }
     println!("-----------------------------------------------------");
 }
-
 
 // Day 1
 fn day_1_part_1_eg() -> Result<i32, Box<dyn std::error::Error>> {

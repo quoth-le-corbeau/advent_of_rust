@@ -22,7 +22,7 @@ pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
     for group in groups {
         let mut total: u32 = 0;
         for item in group.split_whitespace() {
-            let calories:u32 = item.parse()?;
+            let calories: u32 = item.parse()?;
             total += calories;
         }
         totals.push(total);

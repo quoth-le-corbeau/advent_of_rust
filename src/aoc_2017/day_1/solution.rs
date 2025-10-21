@@ -3,13 +3,13 @@ pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<i32, Box<dyn std::error::E
     let nums: Vec<i32> = parse_input(file_path)?;
     let mut total: i32 = 0;
     for (i, num) in nums.iter().enumerate() {
-        let n:i32 = nums[i];
+        let n: i32 = nums[i];
         let mut next_: usize = i + 1;
-        if i + 1  == nums.len() {
+        if i + 1 == nums.len() {
             next_ = 0;
         }
         let next_num: i32 = nums[next_];
-        if n == next_num{
+        if n == next_num {
             total += num;
         }
     }
