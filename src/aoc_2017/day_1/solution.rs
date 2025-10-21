@@ -22,7 +22,7 @@ pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<i32, Box<dyn std::error::E
     let mut total: i32 = 0;
     for (i, num) in nums.iter().enumerate() {
         let n: i32 = nums[i];
-        let steps_forward_index: usize = (i + (nums.len())/ 2) % nums.len();
+        let steps_forward_index: usize = (i + (nums.len()) / 2) % nums.len();
         if n == nums[steps_forward_index] {
             total += num;
         }
