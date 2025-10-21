@@ -1,8 +1,9 @@
 mod day_1;
 
-pub fn twenty_twenty() {
+
+pub fn twenty_eighteen() {
     println!("-----------------------------------------------------");
-    println!("\n=========== *** Advent of Code 2020 *** =============");
+    println!("\n=========== *** Advent of Code 2018 *** =============");
     println!("-----------------------------------------------------");
     println!("------------------- >>> Day 1 <<< -------------------");
     match day_1_part_1_eg() {
@@ -21,22 +22,23 @@ pub fn twenty_twenty() {
     }
     println!("-----------------------------------------------------");
     match day_1_part_2() {
-        Ok(value) => println!("Day1 part 2 value: {value}"),
+        Ok(value) => println!("Day 1 part 2 value: {value}"),
         Err(e) => println!("Day 1 part 2 Error: {e}"),
     }
     println!("-----------------------------------------------------");
 }
 
+// Day 1
 fn day_1_part_1_eg() -> Result<i32, Box<dyn std::error::Error>> {
-    day_1::solution::part_1("src/aoc_2020/day_1/example.txt", 2020)
+    crate::aoc_2018::day_1::solution::part_1("src/aoc_2018/day_1/example.txt")
 }
 fn day_1_part_1() -> Result<i32, Box<dyn std::error::Error>> {
-    day_1::solution::part_1("src/aoc_2020/day_1/input.txt", 2020)
+    crate::aoc_2018::day_1::solution::part_1("src/aoc_2018/day_1/input.txt")
 }
 
 fn day_1_part_2_eg() -> Result<i32, Box<dyn std::error::Error>> {
-    day_1::solution::part_2("src/aoc_2020/day_1/example.txt", 2020)
+    crate::aoc_2018::day_1::solution::part_2("src/aoc_2018/day_1/example.txt")
 }
 fn day_1_part_2() -> Result<i32, Box<dyn std::error::Error>> {
-    day_1::solution::part_2("src/aoc_2020/day_1/input.txt", 2020)
+    crate::aoc_2018::day_1::solution::part_2("src/aoc_2018/day_1/input.txt")
 }

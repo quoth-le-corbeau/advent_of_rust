@@ -1,5 +1,5 @@
-pub mod day_1;
-pub mod day_7;
+mod day_1;
+mod day_7;
 
 pub fn twenty_twenty_two() {
     println!("-----------------------------------------------------");

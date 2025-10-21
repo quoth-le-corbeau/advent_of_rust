@@ -1,4 +1,4 @@
-pub mod day_1;
+mod day_1;
 
 pub fn twenty_sixteen() {
     println!("-----------------------------------------------------");
