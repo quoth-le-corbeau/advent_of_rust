@@ -1,6 +1,5 @@
 mod day_1;
 
-
 pub fn twenty_eighteen() {
     println!("-----------------------------------------------------");
     println!("\n=========== *** Advent of Code 2018 *** =============");
