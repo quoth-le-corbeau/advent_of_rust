@@ -18,8 +18,16 @@ pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<i32, Box<dyn std::error::E
 }
 
 pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<i32, Box<dyn std::error::Error>> {
-    let input_str: String = std::fs::read_to_string(file_path)?;
-    Ok(2)
+    let nums: Vec<i32> = parse_input(file_path)?;
+    let mut total: i32 = 0;
+    for (i, num) in nums.iter().enumerate() {
+        let n: i32 = nums[i];
+        let steps_forward_index: usize = (i + (nums.len())/ 2) % nums.len();
+        if n == nums[steps_forward_index] {
+            total += num;
+        }
+    }
+    Ok(total)
 }
 
 fn parse_input<P: AsRef<Path>>(file_path: P) -> Result<Vec<i32>, Box<dyn std::error::Error>> {
