@@ -7,6 +7,8 @@ mod aoc_2018;
 mod aoc_2019;
 mod aoc_2020;
 mod aoc_2022;
+mod aoc_2023;
+mod aoc_2024;
 
 fn main() {
     aoc_2015::twenty_fifteen();
@@ -16,6 +18,8 @@ fn main() {
     aoc_2019::twenty_nineteen();
     aoc_2020::twenty_twenty();
     aoc_2022::twenty_twenty_two();
+    aoc_2023::twenty_twenty_three();
+    aoc_2024::twenty_twenty_four();
     println!("Fibonacci!");
     let mut cache = HashMap::new();
     //let fib_n: u64 = fibonacci(500, &mut cache); <- panic integer overflow

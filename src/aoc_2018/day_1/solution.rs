@@ -1,6 +1,6 @@
+use std::collections::HashSet;
 use std::fs;
 use std::path::Path;
-use std::collections::HashSet;
 
 pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<i32, Box<dyn std::error::Error>> {
     let changes: Vec<i32> = parse_input(file_path)?;

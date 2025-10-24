@@ -1,4 +1,5 @@
 mod day_1;
+mod day_2;
 
 pub fn twenty_fifteen() {
     println!("-----------------------------------------------------");
@@ -26,6 +27,7 @@ pub fn twenty_fifteen() {
     }
 }
 
+// Day 1
 fn day_1_part_1_eg() -> Result<i32, Box<dyn std::error::Error>> {
     day_1::solution::part_1("src/aoc_2015/day_1/example.txt")
 }
@@ -40,4 +42,20 @@ fn day_1_part_2_eg() -> Result<usize, Box<dyn std::error::Error>> {
 
 fn day_1_part_2() -> Result<usize, Box<dyn std::error::Error>> {
     day_1::solution::part_2("src/aoc_2015/day_1/input.txt")
+}
+// Day 2
+fn day_2_part_1_eg() -> Result<i32, Box<dyn std::error::Error>> {
+    day_1::solution::part_1("src/aoc_2015/day_2/example.txt")
+}
+
+fn day_2_part_1() -> Result<i32, Box<dyn std::error::Error>> {
+    day_1::solution::part_1("src/aoc_2015/day_2/input.txt")
+}
+
+fn day_2_part_2_eg() -> Result<usize, Box<dyn std::error::Error>> {
+    day_1::solution::part_2("src/aoc_2015/day_2/example.txt")
+}
+
+fn day_2_part_2() -> Result<usize, Box<dyn std::error::Error>> {
+    day_1::solution::part_2("src/aoc_2015/day_2/input.txt")
 }
