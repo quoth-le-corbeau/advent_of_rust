@@ -20,11 +20,11 @@ fn main() {
     aoc_2022::twenty_twenty_two();
     aoc_2023::twenty_twenty_three();
     aoc_2024::twenty_twenty_four();
-    println!("Fibonacci!");
+    // println!("Fibonacci!");
     let mut cache = HashMap::new();
     //let fib_n: u64 = fibonacci(500, &mut cache); <- panic integer overflow
-    let fib_n: u64 = fibonacci(91, &mut cache);
-    println!("Fibonacci(n=5): {}", fib_n);
+    let _fib_n: u64 = fibonacci(91, &mut cache);
+    // println!("Fibonacci(n=5): {}", fib_n);
 }
 pub fn fibonacci(n: u64, cache: &mut HashMap<u64, u64>) -> u64 {
     if n == 0 || n == 1 {
