@@ -29,10 +29,10 @@ pub fn twenty_twenty_three() {
 }
 
 // Day 1
-fn day_1_part_1_eg() -> Result<i32, Box<dyn std::error::Error>> {
+fn day_1_part_1_eg() -> Result<u32, Box<dyn std::error::Error>> {
     day_1::solution::part_1("src/aoc_2023/day_1/example.txt")
 }
-fn day_1_part_1() -> Result<i32, Box<dyn std::error::Error>> {
+fn day_1_part_1() -> Result<u32, Box<dyn std::error::Error>> {
     day_1::solution::part_1("src/aoc_2023/day_1/input.txt")
 }
 
