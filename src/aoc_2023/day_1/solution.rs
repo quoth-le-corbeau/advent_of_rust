@@ -11,8 +11,8 @@ pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
         for char in line.chars() {
             if char.is_ascii_digit() {
                 digits.push(char.to_digit(10).unwrap());
-                println!("{char} pushed to digits");
-                println!("{:?}", digits);
+                //println!("{char} pushed to digits");
+                //println!("{:?}", digits);
             }
         }
         line_digits.push(digits);
@@ -20,7 +20,7 @@ pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
     // println!("{:?}", line_digits);
     let mut total: u32 = 0;
     for digits in line_digits {
-        println!("{:?}", digits);
+        //println!("{:?}", digits);
         if digits.len() == 0 {
             continue;
         }
