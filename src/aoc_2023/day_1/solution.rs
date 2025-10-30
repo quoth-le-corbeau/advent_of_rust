@@ -26,7 +26,7 @@ pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
         }
         let first = digits[0];
         let last = digits[digits.len() - 1];
-        total += (first * 10 + last);
+        total += first * 10 + last;
     }
     Ok(total)
 }

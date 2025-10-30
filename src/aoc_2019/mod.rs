@@ -28,10 +28,10 @@ pub fn twenty_nineteen() {
 }
 
 // Day 1
-fn day_1_part_1_eg() -> Result<i32, Box<dyn std::error::Error>> {
+fn day_1_part_1_eg() -> Result<u32, Box<dyn std::error::Error>> {
     crate::aoc_2019::day_1::solution::part_1("src/aoc_2019/day_1/example.txt")
 }
-fn day_1_part_1() -> Result<i32, Box<dyn std::error::Error>> {
+fn day_1_part_1() -> Result<u32, Box<dyn std::error::Error>> {
     crate::aoc_2019::day_1::solution::part_1("src/aoc_2019/day_1/input.txt")
 }
 
