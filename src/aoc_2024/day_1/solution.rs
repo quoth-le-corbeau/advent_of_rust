@@ -18,7 +18,7 @@ pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
 }
 
 pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::Error>> {
-    let (mut left_list, right_list): (Vec<u32>, Vec<u32>) = parse_location_ids(file_path)?;
+    let (left_list, right_list): (Vec<u32>, Vec<u32>) = parse_location_ids(file_path)?;
     // {n: N} n = right_list elem N = count for n i
     let right_list_counter: HashMap<u32, u32> = count_occurrences(right_list)?;
     // println!("{:?}", right_list_counter);
