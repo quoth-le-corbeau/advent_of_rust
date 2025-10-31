@@ -26,6 +26,7 @@ pub fn twenty_fifteen() {
         Ok(value) => println!("Day 1 part 2 value: {value}"),
         Err(error) => println!("Day 1 Part 2 Error: {error}"),
     }
+    println!("-----------------------------------------------------");
     println!("------------------- >>> Day 2 <<< -------------------");
     match day_2_part_1_eg() {
         Ok(value) => println!("Example: Day 1 part 1 value: {value}"),
@@ -46,6 +47,7 @@ pub fn twenty_fifteen() {
         Ok(value) => println!("Day 1 part 2 value: {value}"),
         Err(error) => println!("Day 1 Part 2 Error: {error}"),
     }
+    println!("-----------------------------------------------------");
     println!("------------------- >>> Day 3 <<< -------------------");
     match day_3_part_1_eg() {
         Ok(value) => println!("Example: Day 1 part 1 value: {value}"),
