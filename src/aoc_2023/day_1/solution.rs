@@ -32,7 +32,9 @@ pub fn part_1<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
     Ok(total)
 }
 
-const DIGITS: [&str; 9] = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+const DIGITS: [&str; 9] = [
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+];
 const MAX_DIGIT_LEN: usize = 5;
 
 pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::Error>> {
@@ -67,10 +69,18 @@ pub fn part_2<P: AsRef<Path>>(file_path: P) -> Result<u32, Box<dyn std::error::E
 
         // now loop through the hashmap:
         // get value of min key in digits_by_index and store in variable called tens_digit
-        let tens_digit = digit_by_index.iter().min_by_key(|&(k, _)| k).map(|(_, &v)| v).unwrap_or(0);
+        let tens_digit = digit_by_index
+            .iter()
+            .min_by_key(|&(k, _)| k)
+            .map(|(_, &v)| v)
+            .unwrap_or(0);
 
         // get value of max key in digits_by_index and store in variable called units_digit
-        let units_digit = digit_by_index.iter().max_by_key(|&(k, _)| k).map(|(_, &v)| v).unwrap_or(0);
+        let units_digit = digit_by_index
+            .iter()
+            .max_by_key(|&(k, _)| k)
+            .map(|(_, &v)| v)
+            .unwrap_or(0);
 
         total += tens_digit * 10 + units_digit;
     }
