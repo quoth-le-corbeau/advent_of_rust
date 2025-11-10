@@ -1,6 +1,7 @@
 mod day_1;
 mod day_2;
 mod day_3;
+mod day_4;
 
 pub fn twenty_fifteen() {
     println!("-----------------------------------------------------");
@@ -29,43 +30,63 @@ pub fn twenty_fifteen() {
     println!("-----------------------------------------------------");
     println!("------------------- >>> Day 2 <<< -------------------");
     match day_2_part_1_eg() {
-        Ok(value) => println!("Example: Day 1 part 1 value: {value}"),
+        Ok(value) => println!("Example: Day 2 part 1 value: {value}"),
         Err(error) => println!("Example Day 1 Part 1 Error: {error}"),
     }
     println!("-----------------------------------------------------");
     match day_2_part_1() {
-        Ok(value) => println!("Day 1 part 1 value: {value}"),
-        Err(error) => println!("Day 1 Part 1 Error: {error}"),
+        Ok(value) => println!("Day 2 part 1 value: {value}"),
+        Err(error) => println!("Day 2 Part 1 Error: {error}"),
     }
     println!("-----------------------------------------------------");
     match day_2_part_2_eg() {
-        Ok(value) => println!("Example Day 1 part 2 value: {value}"),
+        Ok(value) => println!("Example Day 2 part 2 value: {value}"),
         Err(error) => println!("Example Day 1 Part 2 Error: {error}"),
     }
     println!("-----------------------------------------------------");
     match day_2_part_2() {
-        Ok(value) => println!("Day 1 part 2 value: {value}"),
+        Ok(value) => println!("Day 2 part 2 value: {value}"),
         Err(error) => println!("Day 1 Part 2 Error: {error}"),
     }
     println!("-----------------------------------------------------");
     println!("------------------- >>> Day 3 <<< -------------------");
     match day_3_part_1_eg() {
-        Ok(value) => println!("Example: Day 1 part 1 value: {value}"),
+        Ok(value) => println!("Example: Day 3 part 1 value: {value}"),
         Err(error) => println!("Example Day 1 Part 1 Error: {error}"),
     }
     println!("-----------------------------------------------------");
     match day_3_part_1() {
-        Ok(value) => println!("Day 1 part 1 value: {value}"),
+        Ok(value) => println!("Day 3 part 1 value: {value}"),
         Err(error) => println!("Day 1 Part 1 Error: {error}"),
     }
     println!("-----------------------------------------------------");
     match day_3_part_2_eg() {
-        Ok(value) => println!("Example Day 1 part 2 value: {value}"),
+        Ok(value) => println!("Example Day 3 part 2 value: {value}"),
         Err(error) => println!("Example Day 1 Part 2 Error: {error}"),
     }
     println!("-----------------------------------------------------");
     match day_3_part_2() {
-        Ok(value) => println!("Day 1 part 2 value: {value}"),
+        Ok(value) => println!("Day 3 part 2 value: {value}"),
+        Err(error) => println!("Day 1 Part 2 Error: {error}"),
+    }
+    println!("------------------- >>> Day 4 <<< -------------------");
+    match day_3_part_1_eg() {
+        Ok(value) => println!("Example: Day 4 part 1 value: {value}"),
+        Err(error) => println!("Example Day 1 Part 1 Error: {error}"),
+    }
+    println!("-----------------------------------------------------");
+    match day_3_part_1() {
+        Ok(value) => println!("Day 4 part 1 value: {value}"),
+        Err(error) => println!("Day 1 Part 1 Error: {error}"),
+    }
+    println!("-----------------------------------------------------");
+    match day_3_part_2_eg() {
+        Ok(value) => println!("Example Day 4 part 2 value: {value}"),
+        Err(error) => println!("Example Day 1 Part 2 Error: {error}"),
+    }
+    println!("-----------------------------------------------------");
+    match day_3_part_2() {
+        Ok(value) => println!("Day 4 part 2 value: {value}"),
         Err(error) => println!("Day 1 Part 2 Error: {error}"),
     }
 }
