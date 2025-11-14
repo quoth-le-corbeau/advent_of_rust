@@ -85,7 +85,7 @@ pub fn twenty_fifteen() {
         Err(error) => println!("Example Day 1 Part 2 Error: {error}"),
     }
     println!("-----------------------------------------------------");
-    match day_3_part_2() {
+    match day_4_part_2() {
         Ok(value) => println!("Day 4 part 2 value: {value}"),
         Err(error) => println!("Day 1 Part 2 Error: {error}"),
     }
