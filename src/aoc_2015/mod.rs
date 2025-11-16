@@ -71,25 +71,26 @@ pub fn twenty_fifteen() {
         Err(error) => println!("Day 1 Part 2 Error: {error}"),
     }
     println!("------------------- >>> Day 4 <<< -------------------");
-    match day_4_part_1_eg() {
-        Ok(value) => println!("Example: Day 4 part 1 value: {value}"),
-        Err(error) => println!("Example Day 1 Part 1 Error: {error}"),
-    }
-    println!("-----------------------------------------------------");
-    match day_4_part_1() {
-        Ok(value) => println!("Day 4 part 1 value: {value}"),
-        Err(error) => println!("Day 1 Part 1 Error: {error}"),
-    }
-    println!("-----------------------------------------------------");
-    match day_4_part_2_eg() {
-        Ok(value) => println!("Example Day 4 part 2 value: {value}"),
-        Err(error) => println!("Example Day 4 Part 2 Error: {error}"),
-    }
-    println!("-----------------------------------------------------");
-    match day_4_part_2() {
-        Ok(value) => println!("Day 4 part 2 value: {value}"),
-        Err(error) => println!("Day 4 Part 2 Error: {error}"),
-    }
+    println!("--------- often skipped since very annoying ---------");
+    //match day_4_part_1_eg() {
+    //    Ok(value) => println!("Example: Day 4 part 1 value: {value}"),
+    //    Err(error) => println!("Example Day 1 Part 1 Error: {error}"),
+    //}
+    //println!("-----------------------------------------------------");
+    //match day_4_part_1() {
+    //    Ok(value) => println!("Day 4 part 1 value: {value}"),
+    //    Err(error) => println!("Day 1 Part 1 Error: {error}"),
+    //}
+    //println!("-----------------------------------------------------");
+    //match day_4_part_2_eg() {
+    //    Ok(value) => println!("Example Day 4 part 2 value: {value}"),
+    //    Err(error) => println!("Example Day 4 Part 2 Error: {error}"),
+    //}
+    //println!("-----------------------------------------------------");
+    //match day_4_part_2() {
+    //    Ok(value) => println!("Day 4 part 2 value: {value}"),
+    //    Err(error) => println!("Day 4 Part 2 Error: {error}"),
+    //}
     println!("------------------- >>> Day 5 <<< -------------------");
     match day_5_part_1_eg() {
         Ok(value) => println!("Example: Day 5 part 1 value: {value}"),
@@ -161,21 +162,21 @@ fn day_3_part_2() -> Result<u32, Box<dyn std::error::Error>> {
     day_3::solution::part_2("src/aoc_2015/day_3/input.txt")
 }
 // Day 4
-fn day_4_part_1_eg() -> Result<u32, Box<dyn std::error::Error>> {
-    day_4::solution::part_1("src/aoc_2015/day_4/example.txt")
-}
-
-fn day_4_part_1() -> Result<u32, Box<dyn std::error::Error>> {
-    day_4::solution::part_1("src/aoc_2015/day_4/input.txt")
-}
-
-fn day_4_part_2_eg() -> Result<u32, Box<dyn std::error::Error>> {
-    day_4::solution::part_2("src/aoc_2015/day_4/example.txt")
-}
-
-fn day_4_part_2() -> Result<u32, Box<dyn std::error::Error>> {
-    day_4::solution::part_2("src/aoc_2015/day_4/input.txt")
-}
+//fn day_4_part_1_eg() -> Result<u32, Box<dyn std::error::Error>> {
+//    day_4::solution::part_1("src/aoc_2015/day_4/example.txt")
+//}
+//
+//fn day_4_part_1() -> Result<u32, Box<dyn std::error::Error>> {
+//    day_4::solution::part_1("src/aoc_2015/day_4/input.txt")
+//}
+//
+//fn day_4_part_2_eg() -> Result<u32, Box<dyn std::error::Error>> {
+//    day_4::solution::part_2("src/aoc_2015/day_4/example.txt")
+//}
+//
+//fn day_4_part_2() -> Result<u32, Box<dyn std::error::Error>> {
+//    day_4::solution::part_2("src/aoc_2015/day_4/input.txt")
+//}
 // Day 5
 fn day_5_part_1_eg() -> Result<u32, Box<dyn std::error::Error>> {
     day_5::solution::part_1("src/aoc_2015/day_5/example.txt")
